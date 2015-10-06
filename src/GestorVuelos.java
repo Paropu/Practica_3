@@ -12,12 +12,12 @@ public class GestorVuelos {
 		try {
 			flujo_entrada = new FileInputStream("base_de_datos.txt"); // CAMBIAR A LINEA DE COMANDOS
 		} // Se crea un flujo de datos al fichero.
-		catch (FileNotFoundException excepcion1) { // Si el fichero no existe, salta excepción
+		catch (FileNotFoundException excepcion1) { // Si el fichero no existe, salta excepciOn
 			System.out.println("Fichero inexistente");// y mostramos mensaje por pantalla
 			System.exit(-1);
 		}
 		Scanner entrada = new Scanner(flujo_entrada);// Se crea un objeto para escanear la linea del fichero
-		String linea = null; // Variable que contendrá la información escaneada del fichero
+		String linea = null; // Variable que contendra la informacion escaneada del fichero
 		int n = 0;
 		LinkedList<Vuelo> listaVuelos = new LinkedList<Vuelo>();
 		while (entrada.hasNextLine()) { // Mientras hay lineas por leer...
@@ -30,8 +30,8 @@ public class GestorVuelos {
 				String coste = separador.nextToken().replace(" ", "");
 				String horaSalida = separador.nextToken().replace(" ", ""); // PASAR A FORMATO HORA
 				String horaLlegada = separador.nextToken().replace(" ", ""); // PASAR A FORMATO HORA
-				// Construimos un objeto Vuelo en cada iteración con los
-				// parámetros escaneados anteriormente.
+				// Construimos un objeto Vuelo en cada iteracion con los
+				// parametros escaneados anteriormente.
 				Vuelo vueloActual = new Vuelo(identificador, companhia, coste, horaSalida, horaLlegada);
 				listaVuelos.add(vueloActual);
 
@@ -42,8 +42,8 @@ public class GestorVuelos {
 		Iterator itr = listaVuelos.iterator();
 		while (itr.hasNext()) {
 			Object element = itr.next();
-			System.out.print(element + " "); // EXTRAER ALGÚN CAMPO
+			System.out.print(element + " "); // EXTRAER ALGuN CAMPO
 		}
-		System.out.println("Fin de la ejecución");
+		System.out.println("Fin de la ejecucion");
 	}
 }

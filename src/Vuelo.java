@@ -7,8 +7,8 @@ public class Vuelo {
 	private String horaSalida;
 	private String horaLlegada;
 
-	public Vuelo(String identificador, String companhia, String coste, String horaSalida, String horaLlegada) { // Método
-																												// "constructor".
+	public Vuelo(String identificador, String companhia, String coste, String horaSalida, String horaLlegada) { // Metodo "constructor".
+		
 		this.identificador = identificador;
 		this.companhia = companhia;
 		this.coste = coste;
@@ -16,7 +16,7 @@ public class Vuelo {
 		this.horaLlegada = horaLlegada;
 	}
 
-	public String getIdentificador() { // Métodos "getter"
+	public String getIdentificador() { // Mï¿½todos "getter"
 		return identificador;
 	}
 
