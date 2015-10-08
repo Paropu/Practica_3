@@ -1,4 +1,7 @@
-import java.io.FileInputStream;
+
+import java.io.*;
+import java.util.LinkedList;
+
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -39,29 +42,73 @@ public class GestorVuelos {
 				// System.out.println(n + vueloActual.getIdentificador() + " - " + vueloActual.getCompanhia() + " - " +
 				// vueloActual.getCoste()
 				// + " - " + vueloActual.getHoraSalida() + " - " + vueloActual.getHoraLlegada()); // Herramienta
+			} //Fin del bucle de creacion de la lista dinamica que contiene la informacion de los vuelos extraida del txt
+		
+		//ORDENAR LISTA POR HORA DE SALIDA
+		
+		//ENVIAR LISTA ORDENADA A TXT
+		
+		FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter("salida.txt"); //CAMBIAR A LINEA DE COMANDOS
+            pw = new PrintWriter(fichero);
+            //for (int i = 0; i < 10; i++) //MODIFICAR PARA CUMPLIR LAS NECESIDADES DEL PROGRAMA
+           //     pw.println("Linea " + i);
+            for(Vuelo e:listaVuelos){
+                pw.println(e.getIdentificador() + "*" + e.getCompanhia() + "*" + e.getCoste() + "*" + e.getHoraSalida() + "*" + e.getHoraLlegada());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally { //Aseguramos que se cierra el fichero.
+           try {
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+		
+		//MOSTRAR POR PANTALLA LA LISTA ORDENADA
+		/*Iterator<Vuelo> itr = listaVuelos.iterator(); //Se puede reemplazar por un for mejorado. 
+		while (itr.hasNext()) {		
+		Object element = itr.next();
+		System.out.println(element.toString()); //Muestra informacion del vuelo.
+		}*/
+		for(Vuelo e:listaVuelos){
+            System.out.printf(e + "\n");
+        }
+		System.out.printf("\n\n*Fin de la ejecucion*\n\n");
+		//System.out.println(listaVuelos);//Herramienta
+		for(int i =0; i<listaVuelos.size(); i++){
+			System.out.println(listaVuelos.get(i).getHoraSalida());
 			}
-		} // Fin del bucle de creacion de la lista dinamica que contiene la informacion de los vuelos extraida del txt
-
-		// ORDENAR LISTA POR HORA DE SALIDA
-
-		// ENVIAR LISTA ORDENADA A TXT
-
-		// MOSTRAR POR PANTALLA LA LISTA ORDENADA
-		Iterator<Vuelo> itr = listaVuelos.iterator();
-		while (itr.hasNext()) {
-			Object element = itr.next();
-			System.out.println(element.toString()); // Muestra informacion del vuelo.
-		}
-		System.out.printf("\n\n*Fin de la ejecucion*"); // Herramienta
 	}
 }
+}
 
-/*
- * Creacion de una coleccion: TipoColeccion <TipoElemento> nombreDeLaColeccion = new tipoColeccion <tipoElemento>
- * 
- * Creacion y uso de un iterador: Iterator <Type> nombreIterador = nombreDeLaColeccion.iterator(); //Creacion while
- * (nombreIterador.hasNext()){ //Uso nombreIterador.next(); //Iterador sobre primer elemento de la coleccion. }
- * 
- * Uso del bucle ForEach: for (T t : this) action.accept(t);
- * 
- */
+/* Creacion de una coleccion:
+TipoColeccion <TipoElemento> nombreDeLaColeccion = new tipoColeccion <tipoElemento>
+
+Creacion y uso de un iterador:
+Iterator <Type> nombreIterador = nombreDeLaColeccion.iterator();  //Creacion
+while (nombreIterador.hasNext()){  //Uso
+nombreIterador.next(); //Iterador sobre primer elemento de la coleccion. 
+}
+
+Uso del bucle ForEach:
+for (T t : this)
+         action.accept(t);
+         
+ Interfaz comparable:
+ public interface Comparable<T> {
+    public int compareTo(T o);
+}
+
+Acceder al dato en la posición i de una lista que implemente el interfaz list:
+for(int i =0; i<lista.size(); i++){
+System.out.println(lista.get(i).nombre);
+}
+*/
+
