@@ -42,8 +42,8 @@ public class Vuelo {
 
 	@Override
 	public String toString() { // Metodo toString() modificado para mostrar las propiedades del vuelo.
-		String mensaje = identificador + " " + companhia + " " + coste + " " + horaSalida + " " + horaLlegada + " Duracion: " + duracion;
-		return mensaje;
+		String mensaje = "      " + identificador + "           " + companhia + "         " + coste + "        " + horaSalida + "      " + horaLlegada + " Duracion: " + duracion;
+		return mensaje;//OPTIMIZAR INTERFAZ GRAFICA
 	}
 
 	// CREAR METODO QUE CALCULE LA DURACION DEL VUELO
