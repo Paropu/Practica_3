@@ -1,6 +1,4 @@
 import java.io.FileInputStream;
-import java.util.LinkedList;
-
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -32,42 +30,38 @@ public class GestorVuelos {
 				String coste = separador.nextToken().replace(" ", "");
 				String horaSalida = separador.nextToken().replace(" ", ""); // PASAR A FORMATO HORA
 				String horaLlegada = separador.nextToken().replace(" ", ""); // PASAR A FORMATO HORA
+				String duracion = Vuelo.duracionVuelo(horaSalida, horaLlegada);
 				// Construimos un objeto Vuelo en cada iteracion con los
 				// parametros escaneados anteriormente.
-				Vuelo vueloActual = new Vuelo(identificador, companhia, coste, horaSalida, horaLlegada);
+				Vuelo vueloActual = new Vuelo(identificador, companhia, coste, horaSalida, horaLlegada, duracion);
 				listaVuelos.add(vueloActual);
 
-				//System.out.println(n + vueloActual.getIdentificador() + " - " + vueloActual.getCompanhia() + " - " + vueloActual.getCoste()
-				//		+ " - " + vueloActual.getHoraSalida() + " - " + vueloActual.getHoraLlegada()); // Herramienta
+				// System.out.println(n + vueloActual.getIdentificador() + " - " + vueloActual.getCompanhia() + " - " +
+				// vueloActual.getCoste()
+				// + " - " + vueloActual.getHoraSalida() + " - " + vueloActual.getHoraLlegada()); // Herramienta
 			}
-		}//Fin del bucle de creacion de la lista dinamica que contiene la informacion de los vuelos extraida del txt
-		
-		//ORDENAR LISTA POR HORA DE SALIDA
-		
-		//ENVIAR LISTA ORDENADA A TXT
-		
-		//MOSTRAR POR PANTALLA LA LISTA ORDENADA
+		} // Fin del bucle de creacion de la lista dinamica que contiene la informacion de los vuelos extraida del txt
+
+		// ORDENAR LISTA POR HORA DE SALIDA
+
+		// ENVIAR LISTA ORDENADA A TXT
+
+		// MOSTRAR POR PANTALLA LA LISTA ORDENADA
 		Iterator<Vuelo> itr = listaVuelos.iterator();
-		while (itr.hasNext()) {		
-		Object element = itr.next();
-		System.out.println(element.toString()); //Muestra informacion del vuelo.
+		while (itr.hasNext()) {
+			Object element = itr.next();
+			System.out.println(element.toString()); // Muestra informacion del vuelo.
 		}
-		System.out.printf("\n\n*Fin de la ejecucion*"); //Herramienta
+		System.out.printf("\n\n*Fin de la ejecucion*"); // Herramienta
 	}
 }
 
-/* Creacion de una coleccion:
-TipoColeccion <TipoElemento> nombreDeLaColeccion = new tipoColeccion <tipoElemento>
-
-Creacion y uso de un iterador:
-Iterator <Type> nombreIterador = nombreDeLaColeccion.iterator();  //Creacion
-while (nombreIterador.hasNext()){  //Uso
-nombreIterador.next(); //Iterador sobre primer elemento de la coleccion. 
-}
-
-Uso del bucle ForEach:
-for (T t : this)
-         action.accept(t);
- 
-*/
-
+/*
+ * Creacion de una coleccion: TipoColeccion <TipoElemento> nombreDeLaColeccion = new tipoColeccion <tipoElemento>
+ * 
+ * Creacion y uso de un iterador: Iterator <Type> nombreIterador = nombreDeLaColeccion.iterator(); //Creacion while
+ * (nombreIterador.hasNext()){ //Uso nombreIterador.next(); //Iterador sobre primer elemento de la coleccion. }
+ * 
+ * Uso del bucle ForEach: for (T t : this) action.accept(t);
+ * 
+ */
