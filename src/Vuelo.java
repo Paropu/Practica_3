@@ -1,17 +1,18 @@
 import java.util.Calendar;
+//import java.util.Comparator;
+//import java.util.Collections;
 import java.util.GregorianCalendar;
 
-public class Vuelo {
+public class Vuelo implements Comparable {
 
 	private String identificador; // Atributos.
 	private String companhia;
 	private String coste;
-	private String horaSalida; // CAMBIAR
-	private String horaLlegada; // CAMBIAR
+	private String horaSalida; 
+	private String horaLlegada; 
 	private String duracion;
 
-	public Vuelo(String identificador, String companhia, String coste, String horaSalida, String horaLlegada, String duracion) { // Metodo
-																																	// "constructor".
+	public Vuelo(String identificador, String companhia, String coste, String horaSalida, String horaLlegada, String duracion) { //Constructor.
 		this.identificador = identificador;
 		this.companhia = companhia;
 		this.coste = coste;
@@ -20,7 +21,7 @@ public class Vuelo {
 		this.duracion = duracion;
 	}
 
-	public String getIdentificador() { // Metodos "getter"
+	public String getIdentificador() { //Getters
 		return identificador;
 	}
 
@@ -39,15 +40,9 @@ public class Vuelo {
 	public String getHoraLlegada() {
 		return horaLlegada;
 	}
-
-	@Override
-	public String toString() { // Metodo toString() modificado para mostrar las propiedades del vuelo.
-		String mensaje = "      " + identificador + "           " + companhia + "         " + coste + "        " + horaSalida + "      " + horaLlegada + " Duracion: " + duracion;
-		return mensaje;//OPTIMIZAR INTERFAZ GRAFICA
-	}
-
-	// CREAR METODO QUE CALCULE LA DURACION DEL VUELO
-	public static String duracionVuelo(String hora1, String hora2) {
+	
+	
+	public static String duracionVuelo(String hora1, String hora2) { //Metodo que calcula la duracion del vuelo.
 
 		// Separo en dos strings
 		String TimeSalida[] = hora1.split(":");
@@ -70,4 +65,17 @@ public class Vuelo {
 
 		return Integer.toString(hora) + ":" + Integer.toString(min);
 	}
+
+	@Override
+	public String toString() { // Metodo toString() modificado para mostrar las propiedades del vuelo.
+		String mensaje = "-----[     | " + identificador + " |    | " + companhia + " |   | " + coste + " |   | " + horaSalida + " |   | " + horaLlegada + " |   | " + duracion + " | ]----";
+		return mensaje;//OPTIMIZAR INTERFAZ GRAFICA
+	}
+	
+	@Override
+	public int compareTo(Object o) { //Metodo compareTo() modificado para definir el orden natural de los objetos en la lista.
+		Vuelo vuelo = (Vuelo) o;
+		return this.horaSalida.replace(":", "").compareTo(vuelo.horaSalida.replace(":", ""));
+	}
+	
 }
