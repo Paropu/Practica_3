@@ -23,6 +23,7 @@ public class GestorVuelos {
 		Scanner entrada = new Scanner(flujo_entrada);// Se crea un objeto para escanear la linea del fichero
 		String linea = null; // Variable que contendra la informacion escaneada del fichero
 		LinkedList<Vuelo> listaVuelos = new LinkedList<Vuelo>();
+
 		while (entrada.hasNextLine()) { // Mientras hay lineas por leer...
 			linea = entrada.nextLine(); // Escaneamos la linea.
 			StringTokenizer separador = new StringTokenizer(linea, "*");
@@ -39,6 +40,7 @@ public class GestorVuelos {
 				listaVuelos.add(vueloActual); // Añadimos el objeto creado a la lista enlazada.
 			} // Fin del bucle de creacion de la lista dinamica que contiene la informacion de los vuelos extraida del txt
 		}
+		entrada.close();
 
 		Collections.sort(listaVuelos); // Se ordena la lista por hora de salida.
 
