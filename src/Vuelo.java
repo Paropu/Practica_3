@@ -8,11 +8,11 @@ public class Vuelo implements Comparable {
 	private String identificador; // Atributos.
 	private String companhia;
 	private String coste;
-	private String horaSalida; 
-	private String horaLlegada; 
+	private String horaSalida;
+	private String horaLlegada;
 	private String duracion;
 
-	public Vuelo(String identificador, String companhia, String coste, String horaSalida, String horaLlegada, String duracion) { //Constructor.
+	public Vuelo(String identificador, String companhia, String coste, String horaSalida, String horaLlegada, String duracion) { // Constructor.
 		this.identificador = identificador;
 		this.companhia = companhia;
 		this.coste = coste;
@@ -21,7 +21,7 @@ public class Vuelo implements Comparable {
 		this.duracion = duracion;
 	}
 
-	public String getIdentificador() { //Getters
+	public String getIdentificador() { // Getters
 		return identificador;
 	}
 
@@ -40,9 +40,8 @@ public class Vuelo implements Comparable {
 	public String getHoraLlegada() {
 		return horaLlegada;
 	}
-	
-	
-	public static String duracionVuelo(String hora1, String hora2) { //Metodo que calcula la duracion del vuelo.
+
+	public static String duracionVuelo(String hora1, String hora2) { // Metodo que calcula la duracion del vuelo.
 
 		// Separo en dos strings
 		String TimeSalida[] = hora1.split(":");
@@ -68,14 +67,15 @@ public class Vuelo implements Comparable {
 
 	@Override
 	public String toString() { // Metodo toString() modificado para mostrar las propiedades del vuelo.
-		String mensaje = "-----[     | " + identificador + " |    | " + companhia + " |   | " + coste + " |   | " + horaSalida + " |   | " + horaLlegada + " |   | " + duracion + " | ]----";
-		return mensaje;//OPTIMIZAR INTERFAZ GRAFICA
+		String mensaje = "\t| " + identificador + " |\t| " + companhia + " |\t\t| " + coste + " |  \t| " + horaSalida + " |\t | "
+				+ horaLlegada + " |\t  | " + duracion + " |";
+		return mensaje;// OPTIMIZAR INTERFAZ GRAFICA
 	}
-	
+
 	@Override
-	public int compareTo(Object o) { //Metodo compareTo() modificado para definir el orden natural de los objetos en la lista.
+	public int compareTo(Object o) { // Metodo compareTo() modificado para definir el orden natural de los objetos en la lista.
 		Vuelo vuelo = (Vuelo) o;
 		return this.horaSalida.replace(":", "").compareTo(vuelo.horaSalida.replace(":", ""));
 	}
-	
+
 }
