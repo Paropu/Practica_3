@@ -69,13 +69,17 @@ public class Vuelo implements Comparable {
 	public String toString() { // Metodo toString() modificado para mostrar las propiedades del vuelo.
 		String mensaje = "\t| " + identificador + " |\t| " + companhia + " |\t\t| " + coste + " |  \t| " + horaSalida + " |\t | "
 				+ horaLlegada + " |\t  | " + duracion + " |";
-		return mensaje;// OPTIMIZAR INTERFAZ GRAFICA
+		return mensaje;
 	}
 
 	@Override
 	public int compareTo(Object o) { // Metodo compareTo() modificado para definir el orden natural de los objetos en la lista.
 		Vuelo vuelo = (Vuelo) o;
-		return this.horaSalida.replace(":", "").compareTo(vuelo.horaSalida.replace(":", ""));
+		if(Integer.parseInt(this.horaSalida.replace(":", ""))<(Integer.parseInt(vuelo.horaSalida.replace(":", "")))){
+			return -1;
+		} else {
+			return 1;
+		}
 	}
 
 }

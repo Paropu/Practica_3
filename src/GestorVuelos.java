@@ -13,7 +13,6 @@ public class GestorVuelos {
 
 		FileInputStream flujo_entrada = null;
 		try {
-			// flujo_entrada = new FileInputStream("base_de_datos.txt"); // Uso del programa sin argumentos por linea de comandos.
 			flujo_entrada = new FileInputStream(args[0]); // Se captura el nombre del fichero de entrada por linea de comandos.
 		} // Se crea un flujo de datos al fichero.
 		catch (FileNotFoundException excepcion1) { // Si el fichero no existe, salta excepcion y se muestra mensaje por pantalla.
@@ -24,7 +23,7 @@ public class GestorVuelos {
 		String linea = null; // Variable que contendra la informacion escaneada del fichero
 		LinkedList<Vuelo> listaVuelos = new LinkedList<Vuelo>();
 
-		while (entrada.hasNextLine()) { // Mientras hay lineas por leer...
+		while (entrada.hasNextLine()) {
 			linea = entrada.nextLine(); // Escaneamos la linea.
 			StringTokenizer separador = new StringTokenizer(linea, "*");
 			while (separador.hasMoreTokens()) { // Separamos los elementos de la linea escaneada
@@ -47,7 +46,6 @@ public class GestorVuelos {
 		FileWriter fichero = null; // Enviamos la informacion a un fichero txt.
 		PrintWriter pw = null;
 		try {
-			// fichero = new FileWriter("salida.txt"); //Uso del programa sin paso de parametros por linea de comandos.
 			fichero = new FileWriter(args[1]); // Se captura el nombre del fichero de salida por linea de comandos.
 			pw = new PrintWriter(fichero);
 			for (Vuelo e : listaVuelos) { // Se envia la informacion al fichero de salida con el mismo formato que el fichero de entrada.
@@ -69,28 +67,5 @@ public class GestorVuelos {
 		System.out.println("     |Identificador|\t| Companhia |\t\t| Precio |\t| Salida |\t| Llegada |\t| Duracion |\n");
 		for (Vuelo e : listaVuelos)
 			System.out.printf(e + "\n\n");
-
-		// System.out.printf("\n\n*Fin de la ejecucion*\n\n"); //Herramienta
 	}
 }
-
-/*
- * -----NOTAS-----
- * 
- * Creacion de una coleccion: TipoColeccion <TipoElemento> nombreDeLaColeccion = new tipoColeccion <tipoElemento>
- * 
- * Creacion y uso de un iterador: Iterator <Type> nombreIterador = nombreDeLaColeccion.iterator(); //Creacion while
- * (nombreIterador.hasNext()){ //Uso nombreIterador.next(); //Iterador sobre primer elemento de la coleccion. }
- * 
- * Uso del bucle ForEach: for (T t : this) action.accept(t);
- * 
- * Interfaz comparable: public interface Comparable<T> { public int compareTo(T o); }
- * 
- * Acceder al dato en la posición i de una lista que implemente el interfaz list: for(int i =0; i<lista.size(); i++){
- * System.out.println(lista.get(i).nombre); } or (Person person : list) { System.out.println(person.getName()+ "   "+ person.getAge()); }
- * 
- * Ordenar elementos de una colección, modificando el metodo sort de la clase Collections. Collections.sort(list,new PersonComparator());
- * public class PersonComparator implements Comparator<Person> {
- * 
- * @Override public int compare(Person obj1, Person obj2) { return obj1.getAge() - obj2.getAge(); } }
- */
