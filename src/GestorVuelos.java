@@ -1,6 +1,7 @@
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.lang.ArrayIndexOutOfBoundsException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Collections;
@@ -9,6 +10,13 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class GestorVuelos {
+	
+	/*
+	 * Introduce por parametro un archivo .txt, con la base de datos de vuelos y
+	 * otro donde se guardaran al finalizar el programa (base_de_datos.txt salida.txt)
+	 * 
+	 */
+	
 	public static void main(String args[]) {
 
 		FileInputStream flujo_entrada = null;
@@ -19,6 +27,11 @@ public class GestorVuelos {
 			System.out.println("Fichero inexistente");
 			System.exit(-1);
 		}
+		catch (ArrayIndexOutOfBoundsException excepcion2) { // Si el fichero no existe, salta excepcion y se muestra mensaje por pantalla.
+			System.out.println("No has introducido ningun nombre de fichero");
+			System.exit(-1);
+		}
+		
 		Scanner entrada = new Scanner(flujo_entrada);// Se crea un objeto para escanear la linea del fichero
 		String linea = null; // Variable que contendra la informacion escaneada del fichero
 		LinkedList<Vuelo> listaVuelos = new LinkedList<Vuelo>();
